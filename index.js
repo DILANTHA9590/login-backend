@@ -1,10 +1,12 @@
 import express from "express";
 import connectDB from "./db/coonectDB.js";
-import dotenv from "dotenv"; // Load environment variables from .env file
+
 import authRoutes from "./routes/auth.routes.js";
-dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT || 5000;
+
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
@@ -12,7 +14,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/auth", authRoutes);
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   connectDB();
-  console.log("Server is Runnig on Port 3000");
+  console.log("Server is Runnig on Port", 5000);
 });
